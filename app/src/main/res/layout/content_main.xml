@@ -12,23 +12,19 @@
         android:id="@+id/cmpButton"
         android:layout_width="300dp"
         android:layout_height="93dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
         android:onClick="onClick"
         android:text="Button"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="392dp"
-        app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="parent"/>
-=======
-        app:layout_constraintBottom_toBottomOf="@+id/toAddress_text"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <EditText
+        android:id="@+id/fromAddress_text"
         android:layout_width="231dp"
         android:layout_height="49dp"
+        android:layout_marginTop="80dp"
         android:text="From"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="126dp"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,13 +33,13 @@
         android:id="@+id/toAddress_text"
         android:layout_width="231dp"
         android:layout_height="49dp"
+        android:layout_marginTop="160dp"
         android:text="To"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="207dp"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintBottom_toBottomOf="@id/fromAddress_text"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 87863fa8aabffd0d2f720e407e225f86e3e2f00f
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
