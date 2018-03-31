@@ -11,18 +11,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
-
-
-//    Button test = findViewById(R.id.button_id);
-//
-//        public void sayHelloWorld(View v){
-//            if(v.getId()== R.id.button_id){
-//                Toast.makeText( this,"Hello World!",Toast.LENGTH_SHORT);
-//            }
-//
-//        }
-
+    Button compareButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        compareButton=findViewById(R.id.cmpButton);
     }
 
     @Override
@@ -50,7 +42,13 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    public void onClick(View v){
+        if(v.getId() == R.id.cmpButton){
+            Toast.makeText(this, "Hello Work", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
