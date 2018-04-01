@@ -52,6 +52,7 @@
                 android:layout_height="63dp"
                 android:ems="10"
                 android:hint="Street 1"
+                android:text="453 Sunnyside Ave"
                 app:layout_constraintHorizontal_bias="0.742"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -67,24 +68,28 @@
                 android:id="@+id/from_city"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
+                android:text="Ottawa"
                 android:hint="City" />
 
             <EditText
                 android:id="@+id/from_state"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
-                android:hint="State" />
+                android:text="ON"
+                android:hint="State/Province" />
 
             <EditText
                 android:id="@+id/from_postal_code"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
-                android:hint="Postal Code" />
+                android:text="K1S0S8"
+                android:hint="Zip/Postal Code" />
 
             <EditText
                 android:id="@+id/from_country"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
+                android:text="CA"
                 android:hint="Country" />
 
         </LinearLayout>
@@ -120,6 +125,7 @@
                 android:layout_height="63dp"
                 android:ems="10"
                 android:hint="Street 1"
+                android:text="1125 Coronel By Drive"
                 app:layout_constraintHorizontal_bias="0.742"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
@@ -135,24 +141,28 @@
                 android:id="@+id/to_city"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
+                android:text="Ottawa"
                 android:hint="City" />
 
             <EditText
                 android:id="@+id/to_state"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
-                android:hint="State" />
+                android:text="ON"
+                android:hint="State/Province" />
 
             <EditText
                 android:id="@+id/to_postal_code"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
-                android:hint="Postal Code" />
+                android:text="K1S5B6"
+                android:hint="Zip/Postal Code" />
 
             <EditText
                 android:id="@+id/to_country"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
+                android:text="CA"
                 android:hint="Country" />
 
         </LinearLayout>
@@ -194,6 +204,7 @@
         android:ems="10"
         android:hint="Weight (g)"
         android:inputType="numberDecimal"
+        android:text="5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/height"
@@ -208,6 +219,7 @@
         android:ems="10"
         android:hint="height(cm)"
         android:inputType="numberDecimal"
+        android:text="5"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="@id/weight"
@@ -221,6 +233,7 @@
         android:ems="10"
         android:hint="width(cm)"
         android:inputType="numberDecimal"
+        android:text="5"
         app:layout_constraintRight_toLeftOf="@id/length"
         app:layout_constraintTop_toBottomOf="@id/weight" />
 
@@ -232,6 +245,7 @@
         android:ems="10"
         android:hint="length(cm)"
         android:inputType="numberDecimal"
+        android:text="5"
         app:layout_constraintLeft_toRightOf="@id/width"
         app:layout_constraintTop_toBottomOf="@id/height" />
 
