@@ -1,4 +1,4 @@
-# Innovapost_CuHacking
+r# Innovapost_CuHacking
 
 ### Authours
 * Jonathan Austin
@@ -7,7 +7,7 @@
 * Vinisha D'Souza
 
 ### About
-The idea for the project was to develope and android app that allows the user to get the price for shipping a pacel either within Canada, USA or between the two through different agencys. The app calculates the rate to ship the parcel between from once desitation to another through all available services for Canada Post, Fedex and USPs, compares them and returns all of them for the user to chose from.
+The idea for the project was to develope and android app that allows the user to get the price for shipping a parcel either within Canada, USA or between the two through different agencies. The app calculates the rate to ship the parcel between from once desitation to another through all available services for Canada Post, Fedex and USPS. This app compares them and returns all of them for the user to chose from.
 
 
 ### Setup
