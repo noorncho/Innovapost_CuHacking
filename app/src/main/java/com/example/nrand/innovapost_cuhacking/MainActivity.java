@@ -20,6 +20,8 @@ import com.example.nrand.innovapost_cuhacking.easyPost.model.Rate;
 import com.example.nrand.innovapost_cuhacking.easyPost.model.Shipment;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +33,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button compareButton;
     PopUpDemo popUpDemo;
+    String rateString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,12 +140,18 @@ public class MainActivity extends AppCompatActivity {
             TextView helloWorld = findViewById(R.id.hello);
             ArrayList<Rate> rates = new ArrayList<>();
             rates.addAll(shipments.get(0).getRates());
+            Collections.sort(rates, new Comparator<Rate>(){
+                @Override
+                public int compare(Rate r1, Rate r2) {
+                    return r1.getRate().compareTo(r2.getRate());
+                }
+            });
+
             StringBuilder rateStringBuilder = new StringBuilder();
             for(Rate r : rates) {
-                rateStringBuilder.append(r.getRate() + "\n");
+                rateStringBuilder.append(r.getService() + "\n" + r.getRate() + "\n");
             }
-            String rateString = rateStringBuilder.toString();
-            helloWorld.setText(rateString);
+            rateString = rateStringBuilder.toString();
         }
     }
 
@@ -151,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "Hello Work", Toast.LENGTH_LONG).show();
             //popUpDemo.showPopup();
             Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            i.putExtra("RATE", rateString);
             startActivity(i);
         }
     }
