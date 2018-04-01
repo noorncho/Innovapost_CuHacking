@@ -13,7 +13,7 @@ public class SecondActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String rateString = extras.getString("RATE");
-        TextView textView = findViewById(R.id.rateTextView);
+        TextView textView = findViewById(R.id.text);
         textView.setText(rateString);
     }
 }
