@@ -23,11 +23,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.widget.Button;
+import android.widget.Toast;
+
+
 
 public class MainActivity extends AppCompatActivity {
-
-
-
+    Button compareButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         EasyPost.apiKey = "HS3r6jpKadfRo487ngMB2g";
 
 
         GetInfoTask getInfoTask = new GetInfoTask();
         getInfoTask.execute();
 
+        compareButton=findViewById(R.id.cmpButton);
     }
 
     @Override
@@ -61,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
 
     public class GetInfoTask extends AsyncTask<Void, Void, List<Shipment>> {
 
@@ -139,4 +143,12 @@ public class MainActivity extends AppCompatActivity {
             helloWorld.setText(rateString);
         }
     }
+
+    public void onClick(View v){
+        if(v.getId() == R.id.cmpButton){
+            Toast.makeText(this, "Hello Work", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }
