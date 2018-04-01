@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_height="match_parent">
 
 
 
@@ -16,7 +15,9 @@
         android:paddingStart="20dp"
         android:paddingLeft="20dp"
         android:inputType="textPersonName"
-        android:text="Provider"/>
+        android:text="Provider"
+        android:layout_marginBottom="20dp"
+        android:paddingBottom="20dp"/>
 
     <TextView
         android:id="@+id/editText3"
@@ -27,18 +28,26 @@
 
     <TextView
         android:id="@+id/editText2"
-        android:layout_width="110dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
         android:inputType="textPersonName"
         android:text="Rate"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:paddingLeft="70dp"
+        android:paddingStart="70dp"
+        app:layout_constraintLeft_toRightOf="@+id/editText3" />
 
-    <view class="android.support.v7.app.AlertController$RecycleListView"
+    <TextView
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/editText2"
+        android:paddingLeft="30dp"
+        android:paddingStart="30dp"
+        android:text="Attributes"/>
+
+    <ListView
         android:id="@+id/list_view"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

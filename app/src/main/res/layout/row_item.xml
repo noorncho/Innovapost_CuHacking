@@ -11,7 +11,8 @@
         android:layout_alignParentLeft="true"
         android:text="stuff1"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:paddingTop="5dp"/>
 
     <TextView
         android:id="@+id/service"
@@ -21,6 +22,7 @@
         android:layout_toEndOf="@+id/provider"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
+        android:paddingTop="5dp"
         android:text="stuff2"/>
 
     <TextView
@@ -31,6 +33,18 @@
         android:layout_alignParentRight="true"
         android:text="stuff3"
         android:layout_marginEnd="90dp"
-        android:layout_marginRight="90dp"/>
+        android:layout_marginRight="90dp"
+        android:paddingTop="5dp"/>
+
+    <TextView
+        android:id="@+id/attributes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="stuff4"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"/>
 
 </RelativeLayout>
