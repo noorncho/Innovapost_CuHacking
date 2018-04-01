@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import java.util.Map;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.shippo.Shippo;
 import com.shippo.exception.ShippoException;
 import com.shippo.model.Address;
@@ -29,16 +31,17 @@ import com.shippo.model.Parcel;
 import com.shippo.model.Rate;
 import com.shippo.model.Shipment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
     Button compareButton;
-    PopUpDemo popUpDemo;
     String rateString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        popUpDemo = new PopUpDemo();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -178,14 +181,47 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Shipment shipment) {
 
-            StringBuilder rateStringBuilder = new StringBuilder();
-            for(Rate r : shipment.getRates()) {
-                rateStringBuilder.append(r.toString());
-            }
+            ArrayList<String> providers = new ArrayList<>();
+            ArrayList<String> prices = new ArrayList<>();
+            ArrayList<String> services = new ArrayList<>();
+            List<Rate> rates = shipment.getRates();
 
-            rateString = rateStringBuilder.toString();
+            for(Rate r : rates) {
+                providers.add(r.getProvider().toString());
+                prices.add(r.getAmount().toString());
+                String serviceString = r.getServicelevel().toString();
+                String[] serviceArray = serviceString.split(",");
+
+                for(int i = 0; i < serviceArray.length; i++) {
+                    serviceArray[i] = serviceArray[i].replace("=", "=\"");
+                }
+                for(int i = 0; i < serviceArray.length-1; i++) {
+                    StringBuilder builder = new StringBuilder();
+                    builder.append(serviceArray[i] + "\",");
+                    serviceArray[i] = builder.toString();
+                }
+                int last = serviceArray.length-1;
+                String lastString = serviceArray[last];
+                serviceArray[last] = lastString.replace("\"", "\"\"");
+
+                StringBuilder builder = new StringBuilder();
+                for(String ele : serviceArray) {
+                    Log.i("QUOTES ADDED", ele);
+                    builder.append(ele);
+                }
+
+                try {
+                    JSONObject serviceLevelObj = new JSONObject(builder.toString());
+                    String service = serviceLevelObj.getString("name");
+                    services.add(service);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             Intent i = new Intent(MainActivity.this, SecondActivity.class);
-            i.putExtra("RATE", rateString);
+            i.putExtra("PROVIDERS", providers);
+            i.putExtra("PRICES", prices);
+            i.putExtra("SERVICES", services);
             startActivity(i);
         }
     }
