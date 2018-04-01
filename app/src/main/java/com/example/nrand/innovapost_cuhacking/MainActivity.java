@@ -12,13 +12,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nrand.innovapost_cuhacking.easyPost.EasyPost;
-import com.example.nrand.innovapost_cuhacking.easyPost.exception.EasyPostException;
-import com.example.nrand.innovapost_cuhacking.easyPost.model.Address;
-import com.example.nrand.innovapost_cuhacking.easyPost.model.Parcel;
-import com.example.nrand.innovapost_cuhacking.easyPost.model.Rate;
-import com.example.nrand.innovapost_cuhacking.easyPost.model.Shipment;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +21,13 @@ import java.util.Map;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.shippo.Shippo;
+import com.shippo.exception.ShippoException;
+import com.shippo.model.Address;
+import com.shippo.model.CarrierAccount;
+import com.shippo.model.Parcel;
+import com.shippo.model.Rate;
+import com.shippo.model.Shipment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        EasyPost.apiKey = "HS3r6jpKadfRo487ngMB2g";
+        Shippo.setApiKey("shippo_test_4b0042a819ba8765836420c5e16a3b004fd89c3e");
 
 
         GetInfoTask getInfoTask = new GetInfoTask();
@@ -74,82 +74,94 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class GetInfoTask extends AsyncTask<Void, Void, List<Shipment>> {
-
+    public class GetInfoTask extends AsyncTask<Void, Void, Shipment> {
+        Shipment shipment = null;
         @Override
-        protected List<Shipment> doInBackground(Void... voids) {
-            Map<String, Object> fromAddressMap = new HashMap<>();
-            fromAddressMap.put("name", "Simpler Postage Inc");
-            fromAddressMap.put("street1", "388 Townsend St");
-            fromAddressMap.put("street2", "");
-            fromAddressMap.put("city", "San Francisco");
-            fromAddressMap.put("state", "CA");
-            fromAddressMap.put("zip", "94107");
-
-            Map<String, Object> toAddressMap = new HashMap<>();
-            //toAddressMap.put("name", "Sawyer Bateman");
-            toAddressMap.put("street1", "202 Colonial Dr");
-            toAddressMap.put("street2", "");
-            toAddressMap.put("city", "Horseheads");
-            toAddressMap.put("state", "NY");
-            toAddressMap.put("zip", "14845");
-
-            Map<String, Object> parcelMap = new HashMap<>();
-            parcelMap.put("weight", 22.9);
-            parcelMap.put("height", 12.1);
-            parcelMap.put("width", 8);
-            parcelMap.put("length", 19.8);
-            Shipment shipment1 = null;
-            Shipment shipment2 = null;
+        protected Shipment doInBackground(Void... voids) {
              try {
-                Address fromAddress = Address.create(fromAddressMap);
-                Address toAddress = Address.create(toAddressMap);
-                Parcel parcel = Parcel.create(parcelMap);
+// To Address
+                 HashMap<String, Object> addressToMap = new HashMap<String, Object>();
+                 addressToMap.put("name", "Mr Hippo");
+                 addressToMap.put("company", "Shippo");
+                 addressToMap.put("street1", "215 Clayton St.");
+                 addressToMap.put("city", "San Francisco");
+                 addressToMap.put("state", "CA");
+                 addressToMap.put("zip", "94117");
+                 addressToMap.put("country", "US");
+                 addressToMap.put("phone", "+1 555 341 9393");
+                 addressToMap.put("email", "mrhippo@goshipppo.com");
 
-                Address verified = toAddress.verify();
+// From Address
+                 HashMap<String, Object> addressFromMap = new HashMap<String, Object>();
+                 addressFromMap.put("name", "Ms Hippo");
+                 addressFromMap.put("company", "San Diego Zoo");
+                 addressFromMap.put("street1", "2920 Zoo Drive");
+                 addressFromMap.put("city", "San Diego");
+                 addressFromMap.put("state", "CA");
+                 addressFromMap.put("zip", "92101");
+                 addressFromMap.put("country", "US");
+                 addressFromMap.put("email", "mshippo@goshipppo.com");
+                 addressFromMap.put("phone", "+1 619 231 1515");
 
-                Map<String, Object> shipmentMap = new HashMap<>();
-                shipmentMap.put("to_address", toAddress);
-                shipmentMap.put("from_address", fromAddress);
-                shipmentMap.put("parcel", parcel);
+// Parcel
+                 HashMap<String, Object> parcelMap = new HashMap<String, Object>();
+                 parcelMap.put("length", "5");
+                 parcelMap.put("width", "5");
+                 parcelMap.put("height", "5");
+                 parcelMap.put("distance_unit", "in");
+                 parcelMap.put("weight", "2");
+                 parcelMap.put("mass_unit", "lb");
 
-                shipment1 = Shipment.create(shipmentMap);
+                 HashMap<String, Object> accountMap = new HashMap<String, Object>();
+                 accountMap.put("carrier", "fedex");
+                 accountMap.put("account_id", "510087780");
+                 accountMap.put("parameters", new HashMap<String, Object>() {
+                     {
+                         put("meter", "119026331");
+                     }
+                 });
+                 accountMap.put("test", Boolean.TRUE);
+                 accountMap.put("active", Boolean.TRUE);
 
-                shipment2 = Shipment.create(shipmentMap);
+                 //CarrierAccount fedex_account = CarrierAccount.create(accountMap);
 
-                // buy postage
-                List<String> buyCarriers = new ArrayList<String>();
-                buyCarriers.add("USPS");
-                List<String> buyServices = new ArrayList<String>();
+                 accountMap = new HashMap<String, Object>();
+                 accountMap.put("carrier", "fedex");
+                 accountMap.put("account_id", "a15876b11c3d54dd");
+                 accountMap.put("parameters", new HashMap<String, Object>() {
+                     {
+                         put("api_password", "160319f8007f8ed4db460f");
+                         put("customer_number", "0008698670");
+                     }
+                 });
+                 accountMap.put("test", Boolean.TRUE);
+                 accountMap.put("active", Boolean.TRUE);
 
-                shipment1 = shipment1.buy(shipment1.lowestRate(buyCarriers, buyServices));
+                 //CarrierAccount post_account = CarrierAccount.create(accountMap);
 
+// Shipment
+                 HashMap<String, Object> shipmentMap = new HashMap<String, Object>();
+                 shipmentMap.put("address_to", addressToMap);
+                 shipmentMap.put("address_from", addressFromMap);
+                 shipmentMap.put("parcels", parcelMap);
+                 //shipmentMap.put("carrier_accounts", new String[]{fedex_account.getObjectId(), post_account.getObjectId()});
+                 shipmentMap.put("async", false);
 
-
-            }catch (EasyPostException e) {
+                 shipment = Shipment.create(shipmentMap);
+            }catch (ShippoException e) {
                 e.printStackTrace();
             }
-
-            List<Shipment> shipments = new ArrayList<>();
-             shipments.add(shipment1);
-            return shipments;
+            return shipment;
         }
 
         @Override
-        protected void onPostExecute(List<Shipment> shipments) {
-            ArrayList<Rate> rates = new ArrayList<>();
-            rates.addAll(shipments.get(0).getRates());
-            Collections.sort(rates, new Comparator<Rate>(){
-                @Override
-                public int compare(Rate r1, Rate r2) {
-                    return r1.getRate().compareTo(r2.getRate());
-                }
-            });
+        protected void onPostExecute(Shipment shipment) {
 
             StringBuilder rateStringBuilder = new StringBuilder();
-            for(Rate r : rates) {
-                rateStringBuilder.append(r.getService() + "\n" + r.getRate() + "\n");
+            for(Rate r : shipment.getRates()) {
+                rateStringBuilder.append(r.toString());
             }
+
             rateString = rateStringBuilder.toString();
         }
     }
