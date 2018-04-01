@@ -222,11 +222,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 String[] attrs = r.getAttributes().toString().split(",");
-                if(attrs.length > 1) {
-                    attrs[0] = attrs[0].replace("[", "");
-                    attrs[1] = attrs[1].replace("]", "");
-                } else if (attrs[0] != null){
-                    attrs[0] = attrs[0].replace("[", "").replace("]", "");
+                for(int i = 0; i < attrs.length; i++) {
+                    attrs[i] = attrs[i].replace("[", "").replace("]", "");
                 }
 
                 StringBuilder builder1 = new StringBuilder();
