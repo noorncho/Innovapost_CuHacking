@@ -7,35 +7,175 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
+
     <Button
         android:id="@+id/cmpButton"
-        android:layout_width="300dp"
-        android:layout_height="93dp"
+        android:layout_width="377dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginRight="68dp"
+        android:layout_marginRight="8dp"
         android:onClick="onClick"
         android:text="Find Rate"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ScrollView
+        android:id="@+id/from_scroll"
+        android:layout_width="189dp"
+        android:layout_height="318dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="193dp"
+            android:layout_height="318dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <TextView
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="From"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/fromStreet1"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:ems="10"
+                android:hint="Street 1"
+                app:layout_constraintHorizontal_bias="0.742"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/fromStreet2"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Street 2" />
+
+            <EditText
+                android:id="@+id/from_city"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="City" />
+
+            <EditText
+                android:id="@+id/from_state"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="State" />
+
+            <EditText
+                android:id="@+id/from_postal_code"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Postal Code" />
+
+            <EditText
+                android:id="@+id/from_country"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Country" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/to_scroll"
+        android:layout_width="185dp"
+        android:layout_height="318dp"
+        app:layout_constraintLeft_toRightOf="@id/from_scroll"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="193dp"
+            android:layout_height="318dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <TextView
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="To"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/toStreet1"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:ems="10"
+                android:hint="Street 1"
+                app:layout_constraintHorizontal_bias="0.742"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/toStreet2"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Street 2" />
+
+            <EditText
+                android:id="@+id/to_city"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="City" />
+
+            <EditText
+                android:id="@+id/to_state"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="State" />
+
+            <EditText
+                android:id="@+id/to_postal_code"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Postal Code" />
+
+            <EditText
+                android:id="@+id/to_country"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:hint="Country" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--
     <EditText
         android:id="@+id/fromAddress_text"
-        android:layout_width="231dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="248dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="From"
         android:inputType="textPostalAddress"
-        app:layout_constraintHorizontal_bias="0.738"
+        app:layout_constraintHorizontal_bias="0.742"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/toAddress_text"
-        android:layout_width="231dp"
-        android:layout_height="49dp"
+        android:layout_width="248dp"
+        android:layout_height="72dp"
         android:layout_marginTop="110dp"
         android:ems="10"
         android:hint="To"
@@ -43,55 +183,57 @@
         app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toTopOf="parent" />
+-->
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
+        android:id="@+id/weight"
+        android:layout_width="189dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Weight (g)"
         android:inputType="numberDecimal"
-        app:layout_constraintHorizontal_bias="0.668"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/height"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toAddress_text" />
+        app:layout_constraintTop_toBottomOf="@id/from_scroll" />
 
     <EditText
         android:id="@+id/height"
-        android:layout_width="wrap_content"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="height(cm)"
         android:inputType="numberDecimal"
-        app:layout_constraintHorizontal_bias="0.668"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/weight"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText3" />
+        app:layout_constraintTop_toBottomOf="@id/to_scroll" />
 
     <EditText
         android:id="@+id/width"
-        android:layout_width="wrap_content"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="width(cm)"
         android:inputType="numberDecimal"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/height" />
+        app:layout_constraintRight_toLeftOf="@id/length"
+        app:layout_constraintTop_toBottomOf="@id/weight" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/length"
+        android:layout_width="189dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="124dp"
         android:ems="10"
         android:hint="length(cm)"
         android:inputType="numberDecimal"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/width" />
+        app:layout_constraintLeft_toRightOf="@id/width"
+        app:layout_constraintTop_toBottomOf="@id/height" />
 
 
 </android.support.constraint.ConstraintLayout>
