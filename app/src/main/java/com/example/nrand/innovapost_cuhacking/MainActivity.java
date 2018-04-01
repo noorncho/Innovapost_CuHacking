@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Shipment> shipments) {
-            TextView helloWorld = findViewById(R.id.hello);
             ArrayList<Rate> rates = new ArrayList<>();
             rates.addAll(shipments.get(0).getRates());
             Collections.sort(rates, new Comparator<Rate>(){
