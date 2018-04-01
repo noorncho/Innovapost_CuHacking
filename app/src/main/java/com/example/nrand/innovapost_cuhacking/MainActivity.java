@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<String> providers = new ArrayList<>();
             ArrayList<String> prices = new ArrayList<>();
             ArrayList<String> services = new ArrayList<>();
+            ArrayList<String> attributes = new ArrayList<>();
             List<Rate> rates = shipment.getRates();
 
             for(Rate r : rates) {
@@ -206,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
                 StringBuilder builder = new StringBuilder();
                 for(String ele : serviceArray) {
-                    Log.i("QUOTES ADDED", ele);
+
                     builder.append(ele);
                 }
 
@@ -217,11 +219,33 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+                String[] attrs = r.getAttributes().toString().split(",");
+                if(attrs.length > 1) {
+                    attrs[0] = attrs[0].replace("[", "");
+                    attrs[1] = attrs[1].replace("]", "");
+                } else if (attrs[0] != null){
+                    attrs[0] = attrs[0].replace("[", "").replace("]", "");
+                }
+
+                StringBuilder builder1 = new StringBuilder();
+                for(int i = 0; i < attrs.length; i++) {
+                    builder1.append(attrs[i]).append("\n");
+                }
+                Log.i("ATTRIBUTES", builder1.toString());
+                if(attrs[0] == null) {
+                    builder1.append(" ");
+                }
+
+                attributes.add(builder1.toString());
             }
             Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            Log.i("ATTRIBUTES", attributes.toString());
             i.putExtra("PROVIDERS", providers);
             i.putExtra("PRICES", prices);
             i.putExtra("SERVICES", services);
+            i.putExtra("ATTRIBUTES", attributes);
             startActivity(i);
         }
     }

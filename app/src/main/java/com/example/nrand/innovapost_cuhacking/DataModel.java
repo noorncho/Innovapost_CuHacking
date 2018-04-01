@@ -5,11 +5,13 @@ public class DataModel {
     private String provider;
     private String price;
     private String service;
+    private String attributes;
 
-    public DataModel(String provider, String price, String service) {
+    public DataModel(String provider, String price, String service, String attributes) {
         this.provider = provider;
         this.price = price;
         this.service = service;
+        this.attributes = attributes;
     }
 
     public String getProvider() {
@@ -22,5 +24,9 @@ public class DataModel {
 
     public String getService() {
         return service;
+    }
+
+    public String getAttributes() {
+        return attributes;
     }
 }

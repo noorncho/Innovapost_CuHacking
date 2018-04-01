@@ -19,13 +19,14 @@ public class SecondActivity extends AppCompatActivity {
         ArrayList<String> providers = extras.getStringArrayList("PROVIDERS");
         ArrayList<String> prices = extras.getStringArrayList("PRICES");
         ArrayList<String> services = extras.getStringArrayList("SERVICES");
+        ArrayList<String> attrs = extras.getStringArrayList("ATTRIBUTES");
         //TextView textView = findViewById(R.id.text);
         //textView.setText(rateString);
 
         ArrayList<DataModel> items = new ArrayList<>();
 
         for(int i = 0; i < providers.size(); i++) {
-            items.add(new DataModel(providers.get(i), prices.get(i), services.get(i)));
+            items.add(new DataModel(providers.get(i), prices.get(i), services.get(i), attrs.get(i)));
         }
 
         ListView listView = findViewById(R.id.list_view);

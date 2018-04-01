@@ -21,6 +21,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
         TextView txtProvider;
         TextView txtService;
         TextView txtPrice;
+        TextView txtAtt;
     }
 
     public CustomAdapter(@NonNull Context context, ArrayList<DataModel> objects) {
@@ -46,6 +47,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
             viewHolder.txtProvider = (TextView) convertView.findViewById(R.id.provider);
             viewHolder.txtPrice = (TextView) convertView.findViewById(R.id.amount);
             viewHolder.txtService = convertView.findViewById(R.id.service);
+            viewHolder.txtAtt = convertView.findViewById(R.id.attributes);
 
             convertView.setTag(viewHolder);
         } else {
@@ -55,6 +57,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
         viewHolder.txtProvider.setText(dataModel.getProvider());
         viewHolder.txtPrice.setText(dataModel.getPrice());
         viewHolder.txtService.setText(dataModel.getService());
+        viewHolder.txtAtt.setText(dataModel.getAttributes());
         // Return the completed view to render on screen
         return convertView;
     }
