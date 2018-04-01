@@ -46,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Shippo.setApiKey("shippo_test_4b0042a819ba8765836420c5e16a3b004fd89c3e");
 
 
-        GetInfoTask getInfoTask = new GetInfoTask();
-        getInfoTask.execute();
+
 
         compareButton=findViewById(R.id.cmpButton);
     }
@@ -81,36 +80,59 @@ public class MainActivity extends AppCompatActivity {
              try {
 // To Address
                  HashMap<String, Object> addressToMap = new HashMap<String, Object>();
+
+                 TextView toStreet1 = findViewById(R.id.toStreet1);
+                 TextView toStreet2 = findViewById(R.id.toStreet2);
+                 TextView toCity = findViewById(R.id.to_city);
+                 TextView toCountry = findViewById(R.id.to_country);
+                 TextView toZip = findViewById(R.id.to_postal_code);
+                 TextView toState = findViewById(R.id.to_state);
+
                  addressToMap.put("name", "Mr Hippo");
                  addressToMap.put("company", "Shippo");
-                 addressToMap.put("street1", "215 Clayton St.");
-                 addressToMap.put("city", "San Francisco");
-                 addressToMap.put("state", "CA");
-                 addressToMap.put("zip", "94117");
-                 addressToMap.put("country", "US");
+                 addressToMap.put("street1", toStreet1.getText().toString());
+                 addressToMap.put("street2", toStreet2.getText().toString());
+                 addressToMap.put("city", toCity.getText().toString());
+                 addressToMap.put("state", toState.getText().toString());
+                 addressToMap.put("zip", toZip.getText().toString());
+                 addressToMap.put("country", toCountry.getText().toString());
                  addressToMap.put("phone", "+1 555 341 9393");
                  addressToMap.put("email", "mrhippo@goshipppo.com");
+
+                 TextView fromStreet1 = findViewById(R.id.fromStreet1);
+                 TextView fromStreet2 = findViewById(R.id.fromStreet2);
+                 TextView fromCity = findViewById(R.id.from_city);
+                 TextView fromCountry = findViewById(R.id.from_country);
+                 TextView fromZip = findViewById(R.id.from_postal_code);
+                 TextView fromState = findViewById(R.id.from_state);
 
 // From Address
                  HashMap<String, Object> addressFromMap = new HashMap<String, Object>();
                  addressFromMap.put("name", "Ms Hippo");
                  addressFromMap.put("company", "San Diego Zoo");
-                 addressFromMap.put("street1", "2920 Zoo Drive");
-                 addressFromMap.put("city", "San Diego");
-                 addressFromMap.put("state", "CA");
-                 addressFromMap.put("zip", "92101");
-                 addressFromMap.put("country", "US");
+                 addressFromMap.put("street1", fromStreet1.getText().toString());
+                 addressFromMap.put("street2", fromStreet2.getText().toString());
+                 addressFromMap.put("city", fromCity.getText().toString());
+                 addressFromMap.put("state", fromState.getText().toString());
+                 addressFromMap.put("zip", fromZip.getText().toString());
+                 addressFromMap.put("country", fromCountry.getText().toString());
                  addressFromMap.put("email", "mshippo@goshipppo.com");
                  addressFromMap.put("phone", "+1 619 231 1515");
 
+
+                 TextView length = findViewById(R.id.length);
+                 TextView width = findViewById(R.id.width);
+                 TextView height = findViewById(R.id.height);
+                 TextView weight = findViewById(R.id.weight);
+
 // Parcel
                  HashMap<String, Object> parcelMap = new HashMap<String, Object>();
-                 parcelMap.put("length", "5");
-                 parcelMap.put("width", "5");
-                 parcelMap.put("height", "5");
-                 parcelMap.put("distance_unit", "in");
-                 parcelMap.put("weight", "2");
-                 parcelMap.put("mass_unit", "lb");
+                 parcelMap.put("length", length.getText().toString());
+                 parcelMap.put("width", width.getText().toString());
+                 parcelMap.put("height", height.getText().toString());
+                 parcelMap.put("distance_unit", "cm");
+                 parcelMap.put("weight", weight.getText().toString());
+                 parcelMap.put("mass_unit", "g");
 
                  HashMap<String, Object> accountMap = new HashMap<String, Object>();
                  accountMap.put("carrier", "fedex");
@@ -144,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                  shipmentMap.put("address_to", addressToMap);
                  shipmentMap.put("address_from", addressFromMap);
                  shipmentMap.put("parcels", parcelMap);
-                 //shipmentMap.put("carrier_accounts", new String[]{fedex_account.getObjectId(), post_account.getObjectId()});
                  shipmentMap.put("async", false);
 
                  shipment = Shipment.create(shipmentMap);
@@ -163,6 +184,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             rateString = rateStringBuilder.toString();
+            Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            i.putExtra("RATE", rateString);
+            startActivity(i);
         }
     }
 
@@ -170,9 +194,9 @@ public class MainActivity extends AppCompatActivity {
         if(v.getId() == R.id.cmpButton){
             //Toast.makeText(this, "Hello Work", Toast.LENGTH_LONG).show();
             //popUpDemo.showPopup();
-            Intent i = new Intent(MainActivity.this, SecondActivity.class);
-            i.putExtra("RATE", rateString);
-            startActivity(i);
+            GetInfoTask getInfoTask = new GetInfoTask();
+            getInfoTask.execute();
+
         }
     }
 }
